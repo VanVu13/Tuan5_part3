@@ -1,0 +1,12 @@
+<% layout('layout') %>
+
+<h2>Forgot Password</h2>
+
+<form action="/auth/forgot" method="POST" class="w-50 mx-auto">
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Send Reset Link</button>
+  <a href="/auth/login" class="btn btn-link">Login</a>
+</form>

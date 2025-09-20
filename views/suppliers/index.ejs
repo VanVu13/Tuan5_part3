@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+<div class="d-flex justify-content-between mb-3">
+  <h2>Suppliers</h2>
+  <a href="/suppliers/new" class="btn btn-success">Add Supplier</a>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% suppliers.forEach(supplier => { %>
+      <tr>
+        <td><%= supplier.name %></td>
+        <td><%= supplier.address %></td>
+        <td><%= supplier.phone %></td>
+        <td>
+          <a href="/suppliers/<%= supplier._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+          <form action="/suppliers/<%= supplier._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>

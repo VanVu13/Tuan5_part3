@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<h2><%= supplier && supplier._id ? 'Edit Supplier' : 'Add Supplier' %></h2>
+
+<form action="/suppliers/save" method="POST" class="w-50 mx-auto">
+  <% if(supplier && supplier._id) { %>
+    <input type="hidden" name="id" value="<%= supplier._id %>">
+  <% } %>
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" value="<%= supplier.name || '' %>" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" name="address" class="form-control" value="<%= supplier.address || '' %>" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Phone</label>
+    <input type="text" name="phone" class="form-control" value="<%= supplier.phone || '' %>" required>
+  </div>
+  <button type="submit" class="btn btn-primary"><%= supplier && supplier._id ? 'Update' : 'Add' %></button>
+  <a href="/suppliers" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('../partials/footer') %>

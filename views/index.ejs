@@ -1,0 +1,44 @@
+<h1 class="mb-4">Welcome to Shop App</h1>
+
+<!-- Form tìm kiếm + lọc -->
+<form class="mb-4 d-flex gap-2" method="GET" action="/">
+  <input type="text" name="search" class="form-control w-50" placeholder="Search product by name" value="<%= search || '' %>">
+  
+  <select name="supplierId" class="form-select w-25">
+    <option value="all" <%= selectedSupplier === 'all' ? 'selected' : '' %>>All Suppliers</option>
+    <% suppliers.forEach(s => { %>
+      <option value="<%= s._id %>" <%= selectedSupplier === s._id.toString() ? 'selected' : '' %>><%= s.name %></option>
+    <% }) %>
+  </select>
+
+  <button class="btn btn-primary">Filter</button>
+</form>
+
+<!-- Bảng sản phẩm -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Supplier</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.forEach(p => { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.price %></td>
+        <td><%= p.quantity %></td>
+        <td><%= p.supplierId.name %></td>
+        <td>
+          <a href="/products/<%= p._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+          <form action="/products/<%= p._id %>?_method=DELETE" method="POST" style="display:inline">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

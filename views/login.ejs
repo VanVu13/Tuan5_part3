@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<h2>Login</h2>
+<form action="/auth/login" method="POST" class="w-50 mx-auto">
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" name="username" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+  <a href="/auth/register" class="btn btn-link">Register</a>
+  <a href="/auth/forgot" class="btn btn-link">Forgot Password?</a>
+</form>
+
+<%- include('partials/footer') %>
